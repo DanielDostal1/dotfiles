@@ -19,6 +19,7 @@ return {
 				"stylua", -- lua formatter
 				"shfmt", -- Shell formatter
 				"gofmt", -- Go formatter
+				"gopls", -- Go language server
 				-- "ruff", -- Python linter and formatter
 			},
 			automatic_installation = true,
@@ -45,6 +46,27 @@ return {
 			formatting.shfmt.with { args = { "-i", "4" } },
 			eslint_d.with {
 				filetypes = { "javascript", "typescript", "typescriptreact" },
+			},
+		}
+
+		-- Set up LSP config for gopls (Go language server)
+		require("lspconfig").gopls.setup {
+			on_attach = function(client, bufnr)
+				-- Enable formatting with gopls
+				if client.server_capabilities.documentFormattingProvider then
+					vim.api.nvim_clear_autocmds { group = "LspFormatting", buffer = bufnr }
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = "LspFormatting",
+						buffer = bufnr,
+						callback = function() vim.lsp.buf.format { async = false } end,
+					})
+				end
+			end,
+			settings = {
+				gopls = {
+					usePlaceholders = true,
+					completeUnimported = true,
+				},
 			},
 		}
 
