@@ -18,6 +18,7 @@ return {
 				"eslint-lsp", -- ts/js linter
 				"stylua", -- lua formatter
 				"shfmt", -- Shell formatter
+				"gofmt", -- Go formatter
 				-- "ruff", -- Python linter and formatter
 			},
 			automatic_installation = true,
@@ -25,7 +26,20 @@ return {
 
 		local sources = {
 			formatting.prettier.with {
-				filetypes = { "html", "json", "markdown", "javascript", "typescript", "typescriptreact" },
+				filetypes = {
+					"html",
+					"json",
+					"markdown",
+					"javascript",
+					"typescript",
+					"typescriptreact",
+					"css",
+					"scss",
+					"go",
+				},
+			},
+			formatting.gofmt.with {
+				filetypes = { "go" },
 			},
 			formatting.stylua,
 			formatting.shfmt.with { args = { "-i", "4" } },
