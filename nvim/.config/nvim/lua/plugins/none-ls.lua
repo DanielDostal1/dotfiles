@@ -20,6 +20,7 @@ return {
 				"shfmt", -- Shell formatter
 				"gofmt", -- Go formatter
 				"gopls", -- Go language server
+				"sqls", -- SQL language server
 				-- "ruff", -- Python linter and formatter
 			},
 			automatic_installation = true,
@@ -37,6 +38,8 @@ return {
 					"css",
 					"scss",
 					"go",
+					"yaml",
+					"yml",
 				},
 			},
 			formatting.gofmt.with {
@@ -64,8 +67,26 @@ return {
 			end,
 			settings = {
 				gopls = {
-					usePlaceholders = true,
+					usePlaceholders = false,
 					completeUnimported = true,
+				},
+			},
+		}
+
+		require("lspconfig").sqls.setup {
+			on_attach = function(client, bufnr)
+				-- You can set up keymaps for running queries here if desired
+				-- Example:
+				-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>sq", "<cmd>SqlsExecuteQuery<CR>", { noremap = true, silent = true })
+			end,
+			settings = {
+				sqls = {
+					connections = {
+						{
+							driver = "postgresql",
+							dataSourceName = "host=localhost port=5432 user=postgres password=postgres dbname=postgres sslmode=disable",
+						},
+					},
 				},
 			},
 		}

@@ -27,6 +27,7 @@ M.plugins = {
 	require "plugins.colorthemes.onedark",
 	require "plugins.colorthemes.nightfox",
 	require "plugins.colorthemes.catppuccin",
+	require "plugins.colorthemes.tokyonight",
 }
 
 -- Theme toggling logic
@@ -41,12 +42,9 @@ M.setup = function()
 
 	-- Keymap for toggling themes
 	vim.keymap.set("n", "<leader>tt", function()
-		local themes = { "rose-pine", "onedark", "nightfox", "catppuccin" }
-		local current = vim.g.colors_name
+		local themes = { "tokyonight", "rose-pine", "onedark", "nightfox", "catppuccin" }
+		local current = load_current_theme()
 		local next = themes[((vim.fn.index(themes, current) or 0) + 1) % #themes + 1]
-
-		print("Themes available: ", vim.inspect(themes))
-		print("Current theme: ", current_theme)
 
 		-- Set the next theme
 		vim.cmd("colorscheme " .. next)
@@ -55,7 +53,10 @@ M.setup = function()
 		save_current_theme(next)
 
 		-- Print the theme change message
-		print("Switched to colorscheme: " .. next)
+		vim.defer_fn(function()
+			-- print("Themes available: ", vim.inspect(themes))
+			print("Switched to colorscheme: " .. load_current_theme())
+		end, 10)
 	end, { desc = "Toggle Themes" })
 end
 
