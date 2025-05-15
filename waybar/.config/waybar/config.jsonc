@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "backlight/slider", "pulseaudio", "battery", "clock"],
+  "modules-right": ["network", "custom/bluetooth", "backlight/slider", "pulseaudio", "battery", "clock"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -42,5 +42,11 @@
     "max": 100,
     "orientation": "horizontal",
     "device": "intel_backlight"
+  },
+  "custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "on-click": "blueman-manager",
+    "interval": 10,
+    "tooltip": false
   }
 }
