@@ -18,6 +18,7 @@ require("lazy").setup {
 	require "plugins.alpha",
 	require "plugins.autocompletion",
 	require "plugins.copilot",
+	require "plugins.games",
 	require "plugins.gitsigns",
 	require "plugins.harpoon",
 	require "plugins.indent-blankline",
