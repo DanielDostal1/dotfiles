@@ -56,14 +56,14 @@ return {
 		require("lspconfig").gopls.setup {
 			on_attach = function(client, bufnr)
 				-- Enable formatting with gopls
-				if client.server_capabilities.documentFormattingProvider then
+				--[[ if client.server_capabilities.documentFormattingProvider then
 					vim.api.nvim_clear_autocmds { group = "LspFormatting", buffer = bufnr }
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = "LspFormatting",
 						buffer = bufnr,
 						callback = function() vim.lsp.buf.format { async = false } end,
 					})
-				end
+				end ]]
 			end,
 			settings = {
 				gopls = {
@@ -97,15 +97,21 @@ return {
 			sources = sources,
 			-- you can reuse a shared lspconfig on_attach callback here
 			on_attach = function(client, bufnr)
-				if client.supports_method "textDocument/formatting" then
+				--[[ if client.supports_method "textDocument/formatting" then
 					vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,
 						buffer = bufnr,
 						callback = function() vim.lsp.buf.format { async = false } end,
 					})
-				end
+				end ]]
 			end,
 		}
+		vim.keymap.set(
+			"n",
+			"<leader>f",
+			function() vim.lsp.buf.format { async = true } end,
+			{ desc = "Format file manually" }
+		)
 	end,
 }
