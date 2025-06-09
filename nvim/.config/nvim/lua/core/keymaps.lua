@@ -51,19 +51,26 @@ vim.keymap.set("n", "<leader>rp", function() -- Run Python
 	local file_dir = vim.fn.expand "%:p:h"
 	vim.cmd "vnew"
 	vim.cmd("terminal cd " .. file_dir .. " && python3 " .. file_path)
-end, opts)
+end, { desc = "Run Python", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>rj", function() -- Run Node
 	local file_path = vim.fn.expand "%:p"
 	local file_dir = vim.fn.expand "%:p:h"
 	vim.cmd "vnew"
 	vim.cmd("terminal cd " .. file_dir .. " && node " .. file_path)
-end, opts)
+end, { desc = "Run Node", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>rg", function() -- Run go
 	local file_path = vim.fn.expand "%:p"
 	local file_dir = vim.fn.expand "%:p:h"
 	vim.cmd "vnew"
 	vim.cmd("terminal cd " .. file_dir .. " && go run " .. file_path)
-end, opts)
+end, { desc = "Run Golang", noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>rc", function() -- Run npm check & npm lint
+	vim.cmd "vnew"
+	vim.cmd "terminal npm run check"
+	vim.cmd "split"
+	vim.cmd "terminal npm run lint"
+end, { desc = "Run npm check", noremap = true, silent = true })
 
 -- Window management
 vim.keymap.set("n", "<leader>v", "<C-w>v", opts) -- split window in vertical position
