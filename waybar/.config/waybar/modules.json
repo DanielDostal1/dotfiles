@@ -1,4 +1,10 @@
 {
+  "custom/spotify": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/spotify-status.sh",
+    "interval": 1,
+    "tooltip": false
+  },
   "hyprland/language": {
     "format": "{}",
     "format-en": "English",
@@ -44,12 +50,12 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-warning": "{icon}  {capacity}%",
-    "format-critical": "{icon}  {capacity}%",
-    "format-plugged": "  {capacity}%",
-    "format-alt": "{icon}  {time}",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-warning": "{icon} {capacity}%",
+    "format-critical": "{icon} {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     "format-full": "  {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{time}"

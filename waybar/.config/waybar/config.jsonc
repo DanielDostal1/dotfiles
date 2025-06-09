@@ -3,7 +3,7 @@
   "height": 24,
   "spacing": 15,
   "modules-left": ["hyprland/workspaces"],
-  // "modules-center": ["hyprland/window"],
+  "modules-center": ["custom/spotify"],
   "modules-right": [
     "hyprland/language", 
     "cpu",
