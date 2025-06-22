@@ -79,16 +79,6 @@ return {
 				-- Example:
 				-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>sq", "<cmd>SqlsExecuteQuery<CR>", { noremap = true, silent = true })
 			end,
-			settings = {
-				sqls = {
-					connections = {
-						{
-							driver = "postgresql",
-							dataSourceName = "host=localhost port=5432 user=postgres password=postgres dbname=postgres sslmode=disable",
-						},
-					},
-				},
-			},
 		}
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
