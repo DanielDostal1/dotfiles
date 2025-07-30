@@ -6,7 +6,7 @@ return {
 	},
 	config = function()
 		local null_ls = require "null-ls"
-		local eslint_d = require "none-ls.diagnostics.eslint_d"
+		-- local eslint_d = require "none-ls.diagnostics.eslint_d"
 
 		local formatting = null_ls.builtins.formatting -- to setup formatters
 		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
@@ -47,9 +47,9 @@ return {
 			},
 			formatting.stylua,
 			formatting.shfmt.with { args = { "-i", "4" } },
-			eslint_d.with {
+			--[[ eslint_d.with {
 				filetypes = { "javascript", "typescript", "typescriptreact" },
-			},
+			}, ]]
 		}
 
 		-- Set up LSP config for gopls (Go language server)
