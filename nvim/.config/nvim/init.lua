@@ -25,7 +25,7 @@ require("lazy").setup {
 	require "plugins.lazygit",
 	require "plugins.lsp",
 	require "plugins.lualine",
-	require "plugins.mini-ai",
+	-- require "plugins.mini-ai",
 	require "plugins.misc",
 	require "plugins.none-ls",
 	require "plugins.oil",

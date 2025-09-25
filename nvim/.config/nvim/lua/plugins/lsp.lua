@@ -220,6 +220,18 @@ return {
 				sqlls = {},
 				jsonls = {},
 
+				hls = {
+					cmd = { "haskell-language-server-wrapper", "--lsp" },
+					filetypes = { "haskell", "lhaskell", "cabal" },
+					root_dir = require("lspconfig.util").root_pattern(
+						"hie.yaml",
+						"stack.yaml",
+						"cabal.project",
+						"package.yaml",
+						".git"
+					),
+				},
+
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},

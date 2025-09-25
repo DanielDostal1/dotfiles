@@ -21,6 +21,8 @@ return {
 			"tsx",
 			"css",
 			"html",
+
+			"haskell",
 		},
 		auto_install = true, -- Autoinstall languages that are not installed
 		highlight = {
