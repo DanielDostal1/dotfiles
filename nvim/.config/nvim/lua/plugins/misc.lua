@@ -4,22 +4,18 @@ return {
 		"folke/which-key.nvim",
 	},
 	{
-		{
-			-- Autoclose parentheses, brackets, quotes, etc...
-			"windwp/nvim-autopairs",
-			event = "InsertEnter",
-			config = true,
-			opts = {},
-		},
+		-- Autoclose parentheses, brackets, quotes, etc...
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		opts = {},
 	},
 	{
-		{
-			-- Autoclose tags
-			"windwp/nvim-ts-autotag",
-			event = "InsertEnter",
-			config = true,
-			opts = {},
-		},
+		-- Autoclose tags
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
+		config = true,
+		opts = {},
 	},
 	{
 		-- Highlight todo, notes, etc in comments
@@ -45,9 +41,9 @@ return {
 			})
 		end,
 	},
-	{
+	--[[ {
 		-- Highlight hex colors
 		"norcalli/nvim-colorizer.lua",
 		config = function() require("colorizer").setup() end,
-	},
+	}, ]]
 }

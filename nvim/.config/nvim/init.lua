@@ -15,7 +15,6 @@ local themes = require "plugins.colorthemes"
 
 require("lazy").setup {
 	themes.plugins,
-	require "plugins.alpha",
 	require "plugins.autocompletion",
 	require "plugins.copilot",
 	require "plugins.games",
@@ -25,17 +24,14 @@ require("lazy").setup {
 	require "plugins.lazygit",
 	require "plugins.lsp",
 	require "plugins.lualine",
-	-- require "plugins.mini-ai",
 	require "plugins.misc",
 	require "plugins.none-ls",
 	require "plugins.oil",
-	require "plugins.tailwind-tools",
 	require "plugins.telescope",
 	require "plugins.treesitter",
 	require "plugins.typescript-tools",
 	require "plugins.undotree",
 
-	-- TODO: tmux
 	-- TODO: overseer
 }
 

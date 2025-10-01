@@ -9,7 +9,7 @@ return {
 		local formatting = null_ls.builtins.formatting
 		-- local diagnostics = null_ls.builtins.diagnostics
 
-		-- Mason integration: ensure tools are installed
+		-- Mason-Null-LS integration
 		require("mason-null-ls").setup {
 			ensure_installed = {
 				"prettier",
@@ -24,7 +24,7 @@ return {
 			automatic_installation = true,
 		}
 
-		-- Null-ls sources (formatters/linters)
+		-- Null-LS sources (formatters/linters)
 		local sources = {
 			formatting.prettier.with {
 				filetypes = {
@@ -46,20 +46,7 @@ return {
 			formatting.shfmt.with { args = { "-i", "4" } },
 		}
 
-		-- Go LSP (gopls)
-		require("lspconfig").gopls.setup {
-			settings = {
-				gopls = {
-					usePlaceholders = false,
-					completeUnimported = true,
-				},
-			},
-		}
-
-		-- SQL LSP (sqls)
-		require("lspconfig").sqls.setup {}
-
-		-- Null-ls setup
+		-- Null-LS setup
 		null_ls.setup {
 			sources = sources,
 			on_attach = function(client, bufnr)
