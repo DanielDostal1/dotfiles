@@ -20,8 +20,9 @@ PS1='[\u@\h \W]\$ '
 export LS_COLORS="di=1;34:ln=1;36:so=1;35:pi=1;33:ex=1;32"
 export CLICOLOR=1
 export PATH="$HOME/.local/bin:/home/daniel/go/bin:$PATH"
+export PATH="$PATH:$HOME/.dotnet/tools"
 set -o vi
 
-# source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
 
 [ -f "/home/daniel/.ghcup/env" ] && . "/home/daniel/.ghcup/env" # ghcup-env

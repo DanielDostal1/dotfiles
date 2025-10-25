@@ -31,6 +31,7 @@ require("lazy").setup {
 	require "plugins.treesitter",
 	require "plugins.typescript-tools",
 	require "plugins.undotree",
+	"ellisonleao/gruvbox.nvim",
 
 	-- TODO: overseer
 }

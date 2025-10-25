@@ -20,7 +20,7 @@ return {
 				"gopls",
 				"sqls",
 				"ruff",
-				"csharpier",
+				-- "csharpier",
 			},
 			automatic_installation = true,
 		}
@@ -45,7 +45,7 @@ return {
 			formatting.gofmt.with { filetypes = { "go" } },
 			formatting.stylua,
 			formatting.shfmt.with { args = { "-i", "4" } },
-      formatting.csharpier.with { filetypes = { "cs" } }
+			-- formatting.csharpier.with { filetypes = { "cs" } }
 		}
 
 		-- Null-LS setup

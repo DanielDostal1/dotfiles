@@ -1,10 +1,4 @@
 {
-  "custom/spotify": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/spotify-status.sh",
-    "interval": 1,
-    "tooltip": false
-  },
   "hyprland/language": {
     "format": "{}",
     "format-en": "en",
@@ -61,7 +55,8 @@
     "tooltip-format": "{time}"
   },
   "clock": {
-    "format": " {:%a %d %H:%M}",
+    "interval": 1,
+    "format": " {:%a %d %H:%M:%S}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   }
 }

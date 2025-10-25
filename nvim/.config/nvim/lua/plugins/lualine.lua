@@ -3,74 +3,123 @@ return {
 	config = function()
 		local mode = {
 			"mode",
-			fmt = function(str)
-				-- return "🐌 " .. str
-				-- return " " .. str:sub(1, 1) -- displays only the first character of the mode
-				return " "
-			end,
-		}
+			fmt = function(str) return " "
+    end,
+  }
 
-		local filename = {
-			"filename",
-			file_status = true, -- displays file status (readonly status, modified status)
-			path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-		}
+  local filename = {
+	  "filename",
+	  file_status = true,
+	  path = 1,
+	  color = { fg = "#ebdbb2" }, -- Gruvbox light beige
+  }
 
-		local hide_in_width = function() return vim.fn.winwidth(0) > 100 end
+  local hide_in_width = function() return vim.fn.winwidth(0) > 100 end
 
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = { error = " ", warn = " ", info = " ", hint = " " },
-			colored = false,
-			update_in_insert = false,
-			always_visible = false,
-			cond = hide_in_width,
-		}
+  local diagnostics = {
+	  "diagnostics",
+	  sources = { "nvim_diagnostic" },
+	  sections = { "error", "warn" },
+	  symbols = { error = "E:", warn = "W:", info = "I:", hint = "H:" },
+	  colored = false,
+	  update_in_insert = false,
+	  always_visible = false,
+	  cond = hide_in_width,
+  }
 
-		local diff = {
-			"diff",
-			colored = false,
-			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-			cond = hide_in_width,
-		}
+  local diff = {
+	  "diff",
+	  colored = false,
+	  symbols = { added = "+", modified = "~", removed = "-" },
+	  cond = hide_in_width,
+  }
 
-		require("lualine").setup {
-			options = {
-				icons_enabled = true,
-				theme = "nord", -- Set theme based on environment variable
-				-- Some useful glyphs:
-				-- https://www.nerdfonts.com/cheat-sheet
-				--        
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "neo-tree" },
-				always_divide_middle = true,
-			},
-			sections = {
-				lualine_a = { mode },
-				lualine_b = { "branch" },
-				lualine_c = { filename },
-				lualine_x = {
-					diagnostics,
-					diff,
-					{ "encoding", cond = hide_in_width },
-					{ "filetype", cond = hide_in_width },
-				},
-				lualine_y = { "location" },
-				lualine_z = { "progress" },
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { { "filename", path = 1 } },
-				lualine_x = { { "location", padding = 0 } },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {},
-			extensions = { "fugitive" },
-		}
-	end,
+  -- Custom Gruvbox Dark theme
+  local gruvbox_dark = {
+	  normal = {
+		  a = { fg = '#333333', bg = '#d65d0e' }, -- Orange accent
+		  b = { fg = '#a89984', bg = '#2b2827' }, -- Gray
+		  c = { fg = '#ebdbb2', bg = '#282828' } -- Default background
+	  },
+	  insert = {
+		  a = { fg = '#282828', bg = '#98971a', gui = 'bold' }, -- Green
+		  b = { fg = '#a89984', bg = '#2b2827' },
+		  c = { fg = '#ebdbb2', bg = '#282828' }
+	  },
+	  visual = {
+		  a = { fg = '#282828', bg = '#b16286', gui = 'bold' }, -- Magenta
+		  b = { fg = '#a89984', bg = '#2b2827' },
+		  c = { fg = '#ebdbb2', bg = '#282828' }
+	  },
+	  replace = {
+		  a = { fg = '#282828', bg = '#fb4934', gui = 'bold' }, -- Red
+		  b = { fg = '#a89984', bg = '#2b2827' },
+		  c = { fg = '#ebdbb2', bg = '#282828' }
+	  },
+	  command = {
+		  a = { fg = '#282828', bg = '#d79921', gui = 'bold' }, -- Yellow
+		  b = { fg = '#a89984', bg = '#2b2827' },
+		  c = { fg = '#ebdbb2', bg = '#282828' }
+	  },
+	  inactive = {
+		  a = { fg = '#665c54', bg = '#2b2827' },
+		  b = { fg = '#665c54', bg = '#2b2827' },
+		  c = { fg = '#665c54', bg = '#282828' }
+	 	}
+  }
+
+  require("lualine").setup {
+	  options = {
+		  icons_enabled = true,
+		  theme = gruvbox_dark,
+		  component_separators = { left = '', right = '' },
+		  section_separators = { left = '', right = '' },
+		  disabled_filetypes = { "alpha", "neo-tree" },
+		  always_divide_middle = true,
+		  globalstatus = true,
+	  },
+	  sections = {
+		  lualine_a = { mode },
+		  lualine_b = {
+			  {
+				  "branch",
+				  icon = "",
+				  color = { fg = "#a89984" }
+        }
+		  },
+		  lualine_c = { filename },
+		  lualine_x = {
+			  diagnostics,
+			  diff,
+			  {
+				  "filetype",
+				  icons_enabled = false,
+				  cond = hide_in_width,
+				  color = { fg = "#a89984" }
+			  },
+		  },
+		  lualine_y = {
+			  {
+				  "location",
+				  color = { fg = "#a89984" }
+        }
+		  },
+		  lualine_z = {
+			  {
+				  "progress",
+				  color = { fg = "#a89984" }
+        }
+		  },
+	  },
+	  inactive_sections = {
+		  lualine_a = {},
+		  lualine_b = {},
+		  lualine_c = { { "filename", path = 1, color = { fg = "#665c54" } } },
+		  lualine_x = { { "location", padding = 0, color = { fg = "#665c54" } } },
+		  lualine_y = {},
+		  lualine_z = {},
+	  },
+	  tabline = {},
+	  extensions = { "fugitive" },
+  }  end,
 }
