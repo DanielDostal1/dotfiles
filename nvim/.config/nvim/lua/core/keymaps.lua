@@ -33,6 +33,8 @@ vim.keymap.set("n", "<leader>PP", '"+P', opts)
 -- Rename all instances of a word
 vim.keymap.set("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
+vim.keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>");
+
 -- Run terminal in a split view
 vim.keymap.set("n", "<leader>m", [[:vnew<Enter>:terminal ]], opts)
 vim.keymap.set("n", "<leader>rp", function() -- Run Python

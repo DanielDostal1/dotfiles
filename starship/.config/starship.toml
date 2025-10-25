@@ -1,6 +1,7 @@
+add_newline = false
 # Minimal Gruvbox Dark Color Scheme
 [character]
-success_symbol = "[❯](#fabd2f)"
+success_symbol = "[❯](#ff8700)"
 error_symbol = "[✗](#fb4934)"
 
 [directory]
@@ -10,7 +11,7 @@ truncate_to_repo = false
 
 [git_branch]
 symbol = " "
-style = "#fabd2f"
+style = "#ff8700"
 format = "[$symbol$branch]($style)"
 
 [git_status]
