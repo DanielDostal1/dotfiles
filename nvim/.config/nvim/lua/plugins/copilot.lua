@@ -49,4 +49,7 @@ return {
 			{ "<leader>zn", "<cmd>CopilotChatRename<cr>", mode = { "v" }, desc = "Rename the variable" },
 		},
 	},
+	--[[ {
+		"Davidyz/VectorCode",
+	}, ]]
 }

@@ -10,6 +10,7 @@ return {
 		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
+	{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
 
 	-- Main LSP configuration
 	{
@@ -94,15 +95,15 @@ return {
 				cssls = {},
 				sqlls = {},
 				jsonls = {},
-				gopls = {
+				--[[ gopls = {
 					settings = {
 						gopls = {
 							usePlaceholders = false,
 							completeUnimported = true,
 						},
 					},
-				},
-				hls = {
+				}, ]]
+				--[[ hls = {
 					cmd = { "haskell-language-server-wrapper", "--lsp" },
 					filetypes = { "haskell", "lhaskell", "cabal" },
 					root_dir = require("lspconfig.util").root_pattern(
@@ -112,7 +113,7 @@ return {
 						"package.yaml",
 						".git"
 					),
-				},
+				}, ]]
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -131,8 +132,25 @@ return {
 					},
 				},
 				omnisharp = {
-					cmd = { vim.fn.stdpath "data" .. "/mason/bin/OmniSharp" },
 					capabilities = capabilities,
+					cmd = { vim.fn.stdpath "data" .. "/mason/bin/OmniSharp" },
+					settings = {
+						RoslynExtensionsOptions = {
+							enableDecompilationSupport = true,
+							enableImportCompletion = true,
+							enableAnalyzersSupport = true,
+						},
+					},
+					handlers = {
+						["textDocument/definition"] = function(...) return require("omnisharp_extended").handler(...) end,
+						["textDocument/typeDefinition"] = function(...)
+							return require("omnisharp_extended").handler(...)
+						end,
+						["textDocument/references"] = function(...) return require("omnisharp_extended").handler(...) end,
+						["textDocument/implementation"] = function(...)
+							return require("omnisharp_extended").handler(...)
+						end,
+					},
 				},
 			}
 
@@ -145,12 +163,13 @@ return {
 			-- Mason-lspconfig setup
 			require("mason-lspconfig").setup {
 				handlers = {
-						-- Default setup for all servers
+					-- Default setup for all servers
 					function(server_name)
 						local server = servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						vim.lsp.config(server_name, server)
-						vim.lsp.enable(server_name)
+						--[[ vim.lsp.config(server_name, server)
+						vim.lsp.enable(server_name) ]]
+                        require("lspconfig")[server_name].setup(server)
 					end,
 				},
 			}

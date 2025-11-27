@@ -28,6 +28,7 @@ M.plugins = {
 	require "plugins.colorthemes.nightfox",
 	require "plugins.colorthemes.catppuccin",
 	require "plugins.colorthemes.tokyonight",
+	require "plugins.colorthemes.material",
 }
 
 -- Theme toggling logic
@@ -42,7 +43,7 @@ M.setup = function()
 
 	-- Keymap for toggling themes
 	vim.keymap.set("n", "<leader>tt", function()
-		local themes = { "tokyonight", "rose-pine", "onedark", "nightfox", "catppuccin" }
+		local themes = { "tokyonight", "rose-pine", "onedark", "nightfox", "catppuccin", "material" }
 		local current = load_current_theme()
 		local next = themes[((vim.fn.index(themes, current) or 0) + 1) % #themes + 1]
 
