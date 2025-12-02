@@ -26,12 +26,13 @@ require("lazy").setup {
 	require "plugins.lualine",
 	require "plugins.misc",
 	require "plugins.none-ls",
+	require "plugins.notes",
 	require "plugins.oil",
 	require "plugins.telescope",
 	require "plugins.treesitter",
 	require "plugins.typescript-tools",
 	require "plugins.undotree",
-	"ellisonleao/gruvbox.nvim",
+	-- "ellisonleao/gruvbox.nvim",
 
 	-- TODO: overseer
 }

@@ -9,7 +9,19 @@ SEARCH_PATHS=(
     "$HOME/Downloads"
 )
 
-selected=$(find "${SEARCH_PATHS[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+TARGET_PATHS=(
+    "$HOME/Downloads"
+    "$HOME/obsidian-vault"
+)
+
+selected=$(
+    {
+        find "${SEARCH_PATHS[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+        for path in "${TARGET_PATHS[@]}"; do
+            [[ -d "$path" ]] && echo "$path"
+        done
+    } | fzf
+)
 
 if [[ -z "$selected" ]]; then
     exit 0
@@ -25,7 +37,7 @@ switch_to() {
     fi
 }
 
-if tmux has-session -t="$selected_name" 2> /dev/null; then
+if tmux has-session -t="$selected_name" 2>/dev/null; then
     switch_to
     exit 0
 fi

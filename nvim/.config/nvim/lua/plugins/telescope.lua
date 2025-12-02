@@ -56,15 +56,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					file_ignore_patterns = { "node_modules", ".git", "postgres%-data", "bin", "obj" },
 					hidden = true,
 				},
-			},
-			live_grep = {
-				file_ignore_patterns = { "node_modules", ".git", "postgres%-data" },
-				additional_args = function(_) return { "--hidden" } end,
+				live_grep = {
+					file_ignore_patterns = { "node_modules", ".git", "postgres%-data" },
+					additional_args = function(_) return { "--hidden" } end,
+				},
 			},
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
+				"fzf",
 			},
 		}
 
@@ -89,7 +90,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>/", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-				winblend = 10,
 				previewer = false,
 			})
 		end, { desc = "[/] Fuzzily search in current buffer" })

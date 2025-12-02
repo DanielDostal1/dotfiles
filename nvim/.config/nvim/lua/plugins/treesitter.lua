@@ -23,7 +23,7 @@ return {
 			"html",
 
 			"haskell",
-      "c_sharp",
+			"c_sharp",
 		},
 		auto_install = true, -- Autoinstall languages that are not installed
 		highlight = {

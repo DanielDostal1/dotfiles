@@ -82,6 +82,20 @@ return {
 				end,
 			})
 
+			vim.api.nvim_create_autocmd({ "VimEnter", "VimResized" }, {
+				desc = "Setup LSP hover window",
+				callback = function()
+					local width = math.floor(vim.o.columns * 0.8)
+					local height = math.floor(vim.o.lines * 0.3)
+
+					vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+						border = "rounded",
+						max_width = width,
+						max_height = height,
+					})
+				end,
+			})
+
 			-- Capabilities (completion, etc.)
 			local capabilities = vim.tbl_deep_extend(
 				"force",
@@ -103,7 +117,7 @@ return {
 						},
 					},
 				}, ]]
-				--[[ hls = {
+				hls = {
 					cmd = { "haskell-language-server-wrapper", "--lsp" },
 					filetypes = { "haskell", "lhaskell", "cabal" },
 					root_dir = require("lspconfig.util").root_pattern(
@@ -113,7 +127,7 @@ return {
 						"package.yaml",
 						".git"
 					),
-				}, ]]
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -131,34 +145,22 @@ return {
 						},
 					},
 				},
-				omnisharp = {
-					capabilities = capabilities,
-					cmd = { vim.fn.stdpath "data" .. "/mason/bin/OmniSharp" },
-					settings = {
-						RoslynExtensionsOptions = {
-							enableDecompilationSupport = true,
-							enableImportCompletion = true,
-							enableAnalyzersSupport = true,
-						},
-					},
-					handlers = {
-						["textDocument/definition"] = function(...) return require("omnisharp_extended").handler(...) end,
-						["textDocument/typeDefinition"] = function(...)
-							return require("omnisharp_extended").handler(...)
-						end,
-						["textDocument/references"] = function(...) return require("omnisharp_extended").handler(...) end,
-						["textDocument/implementation"] = function(...)
-							return require("omnisharp_extended").handler(...)
-						end,
-					},
-				},
 			}
 
 			-- Mason setup
-			require("mason").setup()
 			local ensure_installed = vim.tbl_keys(servers)
 			vim.list_extend(ensure_installed, { "stylua" })
 			require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+			require("mason").setup {
+				registries = {
+					"github:Crashdummyy/mason-registry", -- this contains the register for Roslyn
+					"github:mason-org/mason-registry",
+				},
+				ensure_installed = {
+					"roslyn",
+					"rzls",
+				},
+			}
 
 			-- Mason-lspconfig setup
 			require("mason-lspconfig").setup {
@@ -173,6 +175,21 @@ return {
 					end,
 				},
 			}
+		end,
+	},
+	{
+		"seblyng/roslyn.nvim",
+		enabled = true,
+		ft = "cs",
+		config = function()
+			vim.lsp.config("roslyn", {
+				on_attach = function() print "This will run when the server attaches!" end,
+				settings = {
+					-- Check settings in https://github.com/seblyng/roslyn.nvim
+				},
+			})
+			local roslyn = require "roslyn"
+			roslyn.setup()
 		end,
 	},
 }
