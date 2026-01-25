@@ -44,14 +44,16 @@
       "warning": 30,
       "critical": 15
     },
+    "design-capacity": false,
+    "full-at": 98,
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-warning": "{icon} {capacity}%",
-    "format-critical": "{icon} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-full": "  {capacity}%",
     "format-icons": ["", "", "", "", ""],
+    "format-warning": "{icon} {capacity}%",
+    "format-critical": "{icon} {capacity}%",
     "tooltip-format": "{time}"
   },
   "clock": {

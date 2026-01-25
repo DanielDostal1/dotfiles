@@ -1,0 +1,11 @@
+{
+    "diagnostics.disable": [
+        "missing-fields",
+        "duplicate-set-field",
+        "unused-local"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "d"
+    ]
+}

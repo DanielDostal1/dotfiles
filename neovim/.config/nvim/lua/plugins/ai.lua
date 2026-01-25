@@ -1,0 +1,152 @@
+return {}
+-- TODO: codecompanion
+-- return {
+-- 	{
+-- 		"zbirenbaum/copilot.lua",
+-- 		cmd = "Copilot",
+-- 		event = "InsertEnter",
+-- 		opts = {
+-- 			settings = {
+-- 				advanced = {
+-- 					inlineSuggestCount = 3,
+-- 				},
+-- 			},
+-- 			-- nes = {
+-- 			-- 	enabled = true,
+-- 			-- 	keymap = {
+-- 			-- 		accept_and_goto = "<leader>p",
+-- 			-- 		accept = false,
+-- 			-- 		dismiss = "<Esc>",
+-- 			-- 	},
+-- 			-- },
+-- 			suggestion = {
+-- 				keymap = {
+-- 					accept = "<C-a>",
+-- 					next = "<C-s>",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- 	{
+-- 		"CopilotC-Nvim/CopilotChat.nvim",
+-- 		dependencies = {
+-- 			{ "zbirenbaum/copilot.lua" },
+-- 			{ "nvim-lua/plenary.nvim" },
+-- 		},
+-- 		build = "make tiktoken",
+-- 		opts = {
+-- 			question_header = "  User  ",
+-- 			answer_header = "  Copilot  ",
+-- 			error_header = "  Error  ",
+-- 			show_folds = false,
+-- 			system_prompt = "",
+-- 			prompts = {
+-- 				Rename = {
+-- 					prompt = "Please rename the variable correctly in given selection based on context",
+-- 					selection = function(source)
+-- 						local select = require("CopilotChat.select")
+-- 						return select.visual(source)
+-- 					end,
+-- 				},
+-- 			},
+-- 		},
+-- 		keys = {
+-- 			{ "<leader>zc", "<cmd>CopilotChat<cr>", mode = { "n", "v" }, desc = "Chat with Copilot" },
+-- 		},
+-- 	},
+-- 	-- {
+-- 	-- 	"folke/sidekick.nvim",
+-- 	-- 	opts = {
+-- 	-- 		-- add any options here
+-- 	-- 		cli = {
+-- 	-- 			mux = {
+-- 	-- 				backend = "tmux",
+-- 	-- 				enabled = true,
+-- 	-- 			},
+-- 	-- 		},
+-- 	-- 	},
+-- 	-- 	keys = {
+-- 	-- 		{
+-- 	-- 			"<Tab>",
+-- 	-- 			function()
+-- 	-- 				-- if there is a next edit, jump to it, otherwise apply it if any
+-- 	-- 				if not require("sidekick").nes_jump_or_apply() then
+-- 	-- 					return "<Tab>" -- fallback to normal tab
+-- 	-- 				end
+-- 	-- 			end,
+-- 	-- 			expr = true,
+-- 	-- 			desc = "Goto/Apply Next Edit Suggestion",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<c-.>",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").toggle()
+-- 	-- 			end,
+-- 	-- 			desc = "Sidekick Toggle",
+-- 	-- 			mode = { "n", "t", "i", "x" },
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>aa",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").toggle()
+-- 	-- 			end,
+-- 	-- 			desc = "Sidekick Toggle CLI",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>as",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").select()
+-- 	-- 			end,
+-- 	-- 			-- Or to select only installed tools:
+-- 	-- 			-- require("sidekick.cli").select({ filter = { installed = true } })
+-- 	-- 			desc = "Select CLI",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>ad",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").close()
+-- 	-- 			end,
+-- 	-- 			desc = "Detach a CLI Session",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>at",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").send({ msg = "{this}" })
+-- 	-- 			end,
+-- 	-- 			mode = { "x", "n" },
+-- 	-- 			desc = "Send This",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>af",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").send({ msg = "{file}" })
+-- 	-- 			end,
+-- 	-- 			desc = "Send File",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>av",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").send({ msg = "{selection}" })
+-- 	-- 			end,
+-- 	-- 			mode = { "x" },
+-- 	-- 			desc = "Send Visual Selection",
+-- 	-- 		},
+-- 	-- 		{
+-- 	-- 			"<leader>ap",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").prompt()
+-- 	-- 			end,
+-- 	-- 			mode = { "n", "x" },
+-- 	-- 			desc = "Sidekick Select Prompt",
+-- 	-- 		},
+-- 	-- 		-- Example of a keybinding to open Claude directly
+-- 	-- 		{
+-- 	-- 			"<leader>ac",
+-- 	-- 			function()
+-- 	-- 				require("sidekick.cli").toggle({ name = "claude", focus = true })
+-- 	-- 			end,
+-- 	-- 			desc = "Sidekick Toggle Claude",
+-- 	-- 		},
+-- 	-- 	},
+-- 	-- },
+-- }
