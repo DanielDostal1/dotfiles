@@ -34,7 +34,7 @@ M.lsp = {
     -- "ruff",
 
 	-- [ Dotnet ]
-	"roslyn",
+	-- "roslyn",
 
 	-- [ PHP ]
 	"intelephense",
@@ -43,7 +43,7 @@ M.lsp = {
 	"gopls",
 
 	-- [ Haskell ]
-	"haskell-language-server",
+	-- "haskell-language-server",
 
 	-- [ Database ]
 	"sqlls",
@@ -84,7 +84,7 @@ M.formatters_with_ft = {
 	yaml = { "prettier" },
 	python = { "black" },
 	-- python = { "ruff" },
-	haskell = { "ormolu" },
+	-- haskell = { "ormolu" },
 	cs = { "csharpier" },
 	xml = { "xmlformatter" },
 }

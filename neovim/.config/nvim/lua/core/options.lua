@@ -4,8 +4,8 @@ local opt = vim.opt
 opt.number = true             -- Show line numbers
 opt.relativenumber = true     -- Relative line numbers
 opt.wrap = false
-vim.opt.swapfile = false
-vim.opt.backup = false
+opt.swapfile = false
+opt.backup = false
 -- opt.clipboard = "unnamedplus" -- Sync with system clipboard (requires wl-clipboard)
 
 -- Indentation
