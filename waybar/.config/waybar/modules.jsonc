@@ -21,12 +21,12 @@
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
     "on-click": "nmtui"
   },
-  "custom/bluetooth": {
-    "exec": "~/.config/waybar/scripts/bluetooth.sh",
-    "on-click": "blueman-manager",
-    "interval": 10,
-    "tooltip": false
-  },
+  // "custom/bluetooth": {
+  //   "exec": "~/.config/waybar/scripts/bluetooth.sh",
+  //   "on-click": "blueman-manager",
+  //   "interval": 10,
+  //   "tooltip": false
+  // },
   "backlight": {
     "format": "󰃠  {percent}%",
     "tooltip": false
@@ -49,16 +49,14 @@
     "format": "{icon} {capacity}%",
     "format-charging": "󱐋 {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-full": "  {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "format-warning": "{icon} {capacity}%",
     "format-critical": "{icon} {capacity}%",
     "tooltip-format": "{time}"
   },
   "clock": {
-    "interval": 1,
-    "format": " {:%a %d %H:%M:%S}",
+    "interval": 60,
+    "format": " {:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   }
 }

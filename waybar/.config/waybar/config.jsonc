@@ -3,20 +3,18 @@
   "height": 24,
   "spacing": 15,
   "modules-left": ["hyprland/workspaces"],
-  // "modules-center": ["custom/spotify"],
   "modules-right": [
     "hyprland/language", 
     "cpu",
     "memory",
     "temperature",
     "network",
-    "custom/bluetooth",
     "backlight",
     "pulseaudio",
     "battery",
     "clock"
   ],
   "include": [
-    "~/.config/waybar/modules.json"
+    "~/.config/waybar/modules.jsonc"
   ]
 }
