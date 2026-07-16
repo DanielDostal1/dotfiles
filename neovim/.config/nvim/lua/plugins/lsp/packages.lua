@@ -20,6 +20,7 @@ M.lsp = {
 	-- "ts_ls",
 	"html",
 	"cssls",
+    "eslint",
 	-- 'tailwindcss-language-server'
 
 	-- [ Docker ]
@@ -65,10 +66,10 @@ M.dap = {
 -- Check linters availability at: https://github.com/mfussenegger/nvim-lint
 M.linters_with_ft = {
 	lua = { "luacheck" },
-	javascript = { "eslint" },
-	typescript = { "eslint" },
-	javascriptreact = { "eslint" },
-	typescriptreact = { "eslint" },
+	javascript = { "eslint_d" },
+	typescript = { "eslint_d" },
+	javascriptreact = { "eslint_d" },
+	typescriptreact = { "eslint_d" },
 }
 
 -- Check formatters availability at: https://github.com/stevearc/conform.nvim
@@ -78,6 +79,7 @@ M.formatters_with_ft = {
 	typescript = { "prettier" },
 	javascriptreact = { "prettier" },
 	typescriptreact = { "prettier" },
+    css = { "prettier" },
 	json = { "prettier" },
 	jsonc = { "prettier" },
 	html = { "prettier" },
@@ -85,7 +87,7 @@ M.formatters_with_ft = {
 	python = { "black" },
 	-- python = { "ruff" },
 	-- haskell = { "ormolu" },
-	cs = { "csharpier" },
+	-- cs = { "csharpier" },
 	xml = { "xmlformatter" },
 }
 

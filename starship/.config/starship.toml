@@ -67,3 +67,9 @@ disabled = true
 # Ensure single line
 [line_break]
 disabled = true
+
+[time]
+disabled = false
+format = " [$time](style)"
+style = "#83a598"
+time_format = "%T"

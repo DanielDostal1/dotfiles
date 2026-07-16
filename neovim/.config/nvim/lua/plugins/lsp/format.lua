@@ -1,6 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
+		cmd = { "ConformInfo" },
 		config = function()
 			-- Formatters installed with Mason, binaries added to $PATH on neovim start
 			local formatters_with_ft = require("plugins.lsp.packages").formatters_with_ft
@@ -11,7 +12,18 @@ return {
 			})
 		end,
 		keys = {
-			{ "<leader>f", "<Cmd>lua require('conform').format()<CR>", desc = "Conform format" },
+			{
+				"<leader>f",
+				function()
+					local conform = require("conform")
+					if #conform.list_formatters_for_buffer() > 0 then
+						conform.format({ lsp_format = "never" })
+					else
+						vim.lsp.buf.format()
+					end
+				end,
+				desc = "Format buffer",
+			},
 		},
 	},
 }

@@ -21,10 +21,10 @@ return {
 					local config = lsp_configurations[server] or {}
 					config.capabilities = capabilities
 
-					config.on_attach = function(client)
+					config.on_attach = function(client, bufnr)
 						client.server_capabilities.documentFormattingProvider = false
 
-						if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+						if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, bufnr) then
 							map("n", "<leader>th", function()
 								vim.lsp.inlay_hint.enable(
 									not vim.lsp.inlay_hint.is_enabled({ bufnr = vim.api.nvim_get_current_buf() })
@@ -52,8 +52,8 @@ return {
 			})
 
 			-- Keymaps
-			map("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
-			map("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
+			map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+			map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
 			map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
 			map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 			map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")

@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		branch = "master",
 		event = "VimEnter", -- Loads immediately to ensure icons/setup work
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -22,6 +22,9 @@ return {
 			telescope.setup({
 				defaults = {
 					path_display = { "truncate" },
+					preview = {
+						treesitter = false,
+					},
 					mappings = {
 						i = {
 							["<C-p>"] = actions.move_selection_previous,
@@ -33,13 +36,29 @@ return {
 				pickers = {
 					find_files = {
 						hidden = true,
-						file_ignore_patterns = { "node_modules", ".git", "postgres%-data", "bin", "obj" },
+						file_ignore_patterns = {
+							"node_modules",
+							".git",
+							"postgres%-data",
+							"bin",
+							"obj",
+							"package-lock",
+							"dist",
+						},
 					},
 					live_grep = {
 						additional_args = function(_)
 							return { "--hidden" }
 						end,
-						file_ignore_patterns = { "node_modules", ".git", "postgres%-data", "bin", "obj" },
+						file_ignore_patterns = {
+							"node_modules",
+							".git",
+							"postgres%-data",
+							"bin",
+							"obj",
+							"package-lock",
+							"dist",
+						},
 					},
 				},
 				extensions = {

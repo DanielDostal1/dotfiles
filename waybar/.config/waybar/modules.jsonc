@@ -15,7 +15,7 @@
   },
   "network": {
     "format-wifi": "  {essid}",
-    "format-ethernet": "󰤭  Disconnected",
+    "format-ethernet": " Ethernet",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "  Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",

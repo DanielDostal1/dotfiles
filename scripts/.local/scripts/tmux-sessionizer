@@ -2,20 +2,16 @@
 
 SEARCH_PATHS=(
     "$HOME/dev"
-    "$HOME/dev/andis"
     "$HOME/dev/dotnet"
     "$HOME/dev/learning/DotnetUdemy/Reactivities"
     "$HOME/dotfiles"
-    "$HOME/school"
-    "$HOME/Downloads"
+    "$HOME/dev/vlado"
 )
 
 TARGET_PATHS=(
     "$HOME"
     "$HOME/Downloads"
-    "$HOME/obsidian-vault"
     "$HOME/obsidian"
-    "$HOME/school"
 )
 
 selected=$(

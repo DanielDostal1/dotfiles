@@ -22,6 +22,9 @@ vim.keymap.set("n", "N", "Nzzzv", opts)
 vim.keymap.set("n", "<leader>y", '"+y', opts)
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 vim.keymap.set("n", "<leader>Y", '"+Y', opts)
+vim.keymap.set("n", "<leader>pwd", function()
+	vim.fn.setreg("+", vim.fn.expand("%:."))
+end, { desc = "Copy relative file path", noremap = true, silent = true })
 
 -- Paste from the system clipboard
 vim.keymap.set("n", "<leader>pp", '"+p', opts)
