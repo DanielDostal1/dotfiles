@@ -15,6 +15,7 @@ return {
 		},
 		keys = {
 			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+			{ "<leader>lc", "<cmd>LazyGitFilterCurrentFile<cr>", desc = "Lazygit Current File History" },
 		},
 	},
 	{
@@ -32,9 +33,9 @@ return {
 	},
 	{
 		"f-person/git-blame.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
-            enabled = true,
+			enabled = true,
 			message_template = " <author> • <date> • <summary> • <<sha>>", -- template for the blame message, check the Message template section for more options
 			date_format = "%m-%d-%Y %H:%M",
 			virtual_text_column = 1,

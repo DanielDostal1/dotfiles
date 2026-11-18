@@ -23,7 +23,8 @@ vim.keymap.set("n", "<leader>y", '"+y', opts)
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 vim.keymap.set("n", "<leader>Y", '"+Y', opts)
 vim.keymap.set("n", "<leader>pwd", function()
-	vim.fn.setreg("+", vim.fn.expand("%:."))
+	local path = vim.api.nvim_buf_get_name(0):gsub("^oil://", "")
+	vim.fn.setreg("+", vim.fn.fnamemodify(path, ":."))
 end, { desc = "Copy relative file path", noremap = true, silent = true })
 
 -- Paste from the system clipboard
