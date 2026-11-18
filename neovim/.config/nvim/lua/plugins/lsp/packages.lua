@@ -17,7 +17,7 @@ M.lsp = {
 	"bashls",
 
 	-- [ Web dev ]
-	-- "ts_ls",
+	"ts_ls",
 	"html",
 	"cssls",
     "eslint",
@@ -33,9 +33,6 @@ M.lsp = {
 	-- [ Python ]
 	"pyright",
     -- "ruff",
-
-	-- [ Dotnet ]
-	-- "roslyn",
 
 	-- [ PHP ]
 	"intelephense",
@@ -87,7 +84,7 @@ M.formatters_with_ft = {
 	python = { "black" },
 	-- python = { "ruff" },
 	-- haskell = { "ormolu" },
-	-- cs = { "csharpier" },
+	cs = { "csharpier" },
 	xml = { "xmlformatter" },
 }
 

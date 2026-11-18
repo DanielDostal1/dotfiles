@@ -14,7 +14,9 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local map = require("core.utils").map
 
-			mason_lspconfig.setup()
+			mason_lspconfig.setup({
+				automatic_enable = { exclude = packages.managed_separately },
+			})
 
 			for _, server in ipairs(packages.lsp) do
 				if not vim.tbl_contains(packages.managed_separately or {}, server) then
