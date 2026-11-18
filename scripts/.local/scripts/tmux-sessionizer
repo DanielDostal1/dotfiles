@@ -10,6 +10,7 @@ SEARCH_PATHS=(
 
 TARGET_PATHS=(
     "$HOME"
+    "$HOME/dev"
     "$HOME/Downloads"
     "$HOME/obsidian"
 )
