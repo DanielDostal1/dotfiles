@@ -65,6 +65,26 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {
+			on = {
+				render = function(ctx) require("core.hover").scrollbar(ctx.win) end,
+			},
+			overrides = {
+				buftype = {
+					nofile = {
+						anti_conceal = { enabled = false },
+						win_options = {
+							concealcursor = { rendered = "nvic" },
+						},
+						code = {
+							width = "block",
+							border = "hide",
+							inline = false,
+						},
+					},
+				},
+			},
+		},
 	},
 	-- {
 	-- 	"folke/noice.nvim",

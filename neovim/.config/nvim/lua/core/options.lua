@@ -33,6 +33,7 @@ opt.incsearch = true
 
 -- UI
 opt.termguicolors = true      -- True color support
+opt.winborder = "rounded"     -- Borders for hover, signature help, and other floats
 opt.signcolumn = "yes"        -- Always show sign column (prevents shift)
 opt.splitbelow = true         -- Split horizontal windows below
 opt.splitright = true         -- Split vertical windows right

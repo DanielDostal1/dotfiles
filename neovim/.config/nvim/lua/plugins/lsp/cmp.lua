@@ -70,6 +70,16 @@ return { -- Autocompletion
 				expand = function(args) luasnip.lsp_expand(args.body) end,
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
+			window = {
+				completion = cmp.config.window.bordered {
+					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+				},
+				documentation = cmp.config.window.bordered {
+					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,Search:None",
+				},
+			},
 
 			-- For an understanding of why these mappings were
 			-- chosen, you will need to read `:help ins-completion`

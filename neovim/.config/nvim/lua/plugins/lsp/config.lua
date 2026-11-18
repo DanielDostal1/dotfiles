@@ -60,10 +60,9 @@ return {
 			map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 			map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
 			map("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<cr>")
-			map("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
-			-- map("n", "K", function()
-			--     vim.lsp.buf.hover({ border = "rounded" })
-			-- end)
+			map("n", "K", function()
+				vim.lsp.buf.hover({ max_width = 88, max_height = 24 })
+			end)
 		end,
 	},
 	{ "j-hui/fidget.nvim", opts = {} },
