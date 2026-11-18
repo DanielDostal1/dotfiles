@@ -2,6 +2,20 @@ return {
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		config = function(_, opts)
+			local utils = require("typescript-tools.protocol.utils")
+			local make_tags = utils.tsserver_make_tags
+			-- Keep example fences on their own line until typescript-tools fixes its formatter.
+			utils.tsserver_make_tags = function(tags)
+				return table.concat(vim.tbl_map(function(tag)
+					if tag.name == "example" and tag.text then
+						return "\n_@example_\n\n" .. utils.tsserver_docs_to_plain_text(tag.text, nil, true)
+					end
+					return make_tags({ tag })
+				end, tags), "\n")
+			end
+			require("typescript-tools").setup(opts)
+		end,
 		opts = {
 			settings = {
 				publish_diagnostic_on = "change",
